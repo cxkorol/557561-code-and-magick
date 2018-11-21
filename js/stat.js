@@ -7,8 +7,6 @@ window.renderStatistics = function (ctx, names, times) {
   var CLOUD_X = 100; // Стартовые координаты поля статистики по оси Х
   var CLOUD_Y = 10; // Стартовые координаты поля статистики по оси Х
   var GAP = 10; // Смещение для облака
-  var TEXT_LINES_X = 105; // Стартовые координаты текстового поля по оси Х
-  var TEXT_LINES_Y = 20; // Стартовые координаты текстового поля по оси Y
   var MAX_HEIGHT_BAR = 150; // Максимальная высота столбцов
   var GAP_BAR = 50; // Промежуток между столбцами
   var WIDTH_BAR = 40; // Ширина столбца
@@ -28,14 +26,16 @@ window.renderStatistics = function (ctx, names, times) {
       'Ура вы победили!',
       'Список результатов:'
     ];
+    var textLinesX = 105; // Стартовые координаты текстового поля по оси Х
+    var textLinesY = 20; // Cтартовые координаты текстового поля по оси Y
 
     ctx.fillStyle = '#000000';
     ctx.font = 'bold 16px PT Mono';
     ctx.textBaseline = 'hanging';
 
     for (var i = 0; i < textLines.length; i++) {
-      TEXT_LINES_Y += 20;
-      ctx.fillText(textLines[i], TEXT_LINES_X, TEXT_LINES_Y);
+      textLinesY += 20;
+      ctx.fillText(textLines[i], textLinesX, textLinesY);
     }
   };
 
@@ -64,7 +64,7 @@ window.renderStatistics = function (ctx, names, times) {
   var maxTime = getMaxTime(); // Записывает максимальное значение массива в переменную
 
   for (var i = 0; i < names.length; i++) {
-    var ColorSaturationRandom = getRandom(0, 0.8); // Случайное значение
+    var сolorSaturationRandom = getRandom(0, 0.8); // Случайное значение
     var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime; // Расчет высоты столбца игрока
     var textTimesPositionY = MAX_HEIGHT_BAR - heightBarPlayer - 20; // Расположение текста с результатом по оси Y
 
@@ -74,7 +74,7 @@ window.renderStatistics = function (ctx, names, times) {
         PLAYER_NAME_POSITION_Y + GAP
     );
 
-    ctx.fillStyle = 'rgba(0, 0, 255, ' + ColorSaturationRandom + ')'; // Заливка столбцов цветом со случайной насыщенностью
+    ctx.fillStyle = 'rgba(0, 0, 255, ' + сolorSaturationRandom + ')'; // Заливка столбцов цветом со случайной насыщенностью
 
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)'; // Заливка столбца игрока
