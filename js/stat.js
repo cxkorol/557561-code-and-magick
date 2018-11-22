@@ -64,7 +64,7 @@ window.renderStatistics = function (ctx, names, times) {
   var maxTime = getMaxTime(); // Записывает максимальное значение массива в переменную
 
   for (var i = 0; i < names.length; i++) {
-    var сolorSaturationRandom = getRandom(0, 0.8); // Случайное значение
+    var сolorSaturationRandom = getRandom(0.2, 1); // Случайное значение
     var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime; // Расчет высоты столбца игрока
     var textTimesPositionY = MAX_HEIGHT_BAR - heightBarPlayer - 20; // Расположение текста с результатом по оси Y
 
