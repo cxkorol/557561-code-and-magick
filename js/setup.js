@@ -46,8 +46,8 @@ var EYE_COLORS = [
 var NUM_WIZARDS = 4;
 
 // Нахождение случайного числа
-var getRandom = function (arr) {
-  return Math.floor(Math.random() * arr);
+var getRandom = function (upperBound) {
+  return Math.floor(Math.random() * upperBound);
 };
 
 // Создание массива волшебников
