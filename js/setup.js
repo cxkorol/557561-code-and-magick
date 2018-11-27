@@ -1,6 +1,6 @@
 'use strict';
 
-window.utils = (function () {
+(function () {
 
   // Массив имён волшебников
   var WIZARD_NAMES = [
