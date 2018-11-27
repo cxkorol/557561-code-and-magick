@@ -1,6 +1,6 @@
 'use strict';
 
-window.renderSimilarWizards = function () {
+window.renderSimilarWizards = (function () {
 
   // Массив имён волшебников
   var WIZARD_NAMES = [
@@ -101,4 +101,4 @@ window.renderSimilarWizards = function () {
   userDialog.classList.remove('hidden');
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-};
+})();
