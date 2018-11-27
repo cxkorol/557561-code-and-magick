@@ -1,9 +1,6 @@
 'use strict';
 
-var userDialog = document.querySelector('.setup');
-var similarListElement = document.querySelector('.setup-similar-list');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-
+// Массив имён волшебников
 var WIZARD_NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -15,6 +12,7 @@ var WIZARD_NAMES = [
   'Вашингтон'
 ];
 
+// Массив фамилий волшебников
 var WIZARD_SECOND_NAMES = [
   'да Марья',
   'Верон',
@@ -26,6 +24,7 @@ var WIZARD_SECOND_NAMES = [
   'Ирвинг'
 ];
 
+// Массив цветов плащей волшебников
 var COAT_COLORS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
@@ -35,6 +34,7 @@ var COAT_COLORS = [
   'rgb(0, 0, 0)'
 ];
 
+// Массив цветов глаз волшебников
 var EYE_COLORS = [
   'black',
   'red',
@@ -43,6 +43,7 @@ var EYE_COLORS = [
   'green'
 ];
 
+// Количество волшебников
 var NUM_WIZARDS = 4;
 
 // Нахождение случайного числа
@@ -50,7 +51,7 @@ var getRandom = function (upperBound) {
   return Math.floor(Math.random() * upperBound);
 };
 
-// Создание массива волшебников
+// Функция создания массива волшебников
 var createWizardsArray = function () {
   var wizards = [];
   for (var i = 0; i < NUM_WIZARDS; i++) {
@@ -69,7 +70,10 @@ var createWizardsArray = function () {
   return wizards;
 };
 
-var wizards = createWizardsArray();
+var wizards = createWizardsArray(); // Создание массива волшебников
+var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
+var similarListElement = document.querySelector('.setup-similar-list'); // Блок с похожими волшебниками
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item'); // Элемент для вставки похожих волшебников
 
 // Создание и отрисовка шаблона волшебников
 var renderWizard = function (wizard) {
