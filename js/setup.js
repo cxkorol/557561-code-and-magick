@@ -1,6 +1,6 @@
 'use strict';
 
-window.renderSimilarWizards = (function () {
+window.utils = (function () {
 
   // Массив имён волшебников
   var WIZARD_NAMES = [
