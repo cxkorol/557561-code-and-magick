@@ -125,7 +125,7 @@
       closePopup();
     }
   };
-  
+
   // Функция открытия окна настроек
   var openPopup = function () {
     userDialog.classList.remove('hidden');
@@ -152,7 +152,7 @@
   var wizardEyes = setupWizard.querySelector('.wizard-eyes'); // Элемент глаз
   var wizardFireball = document.querySelector('.setup-fireball-wrap'); // Элемент файербола
   var wizardFireballInput = document.querySelector('input'); // Инпут фаербола
-  var coatInput = userDialog.querySelector('[name=coat-color'); // Инпут плаща волшебника
+  var coatInput = userDialog.querySelector('[name=coat-color]'); // Инпут плаща волшебника
   var eyesInput = userDialog.querySelector('[name=eyes-color]'); // Инпут глаз волшебника
 
   // Открытие окна настроек по клику
