@@ -61,6 +61,20 @@
   var ESC_KEY = 27;
   var ENTER_KEY = 13;
 
+  var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
+  var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
+  var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
+  var similarListElement = document.querySelector('.setup-similar-list'); // Блок с похожими волшебниками
+  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item'); // Элемент для вставки похожих волшебников
+  var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
+  var setupWizard = document.querySelector('.setup-wizard'); // Окно настроек персонажа
+  var wizardCoat = setupWizard.querySelector('.wizard-coat'); // Элемент плаща
+  var wizardEyes = setupWizard.querySelector('.wizard-eyes'); // Элемент глаз
+  var wizardFireball = document.querySelector('.setup-fireball-wrap'); // Элемент файербола
+  var wizardFireballInput = document.querySelector('[name=fireball-color]'); // Инпут фаербола
+  var coatInput = userDialog.querySelector('[name=coat-color]'); // Инпут плаща волшебника
+  var eyesInput = userDialog.querySelector('[name=eyes-color]'); // Инпут глаз волшебника
+
   // Фунция нахождения случайного числа
   var getRandom = function (upperBound) {
     return Math.floor(Math.random() * upperBound);
@@ -140,21 +154,6 @@
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
-  var wizards = createWizardsArray(); // Создание массива волшебников
-  var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
-  var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
-  var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
-  var similarListElement = document.querySelector('.setup-similar-list'); // Блок с похожими волшебниками
-  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item'); // Элемент для вставки похожих волшебников
-  var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
-  var setupWizard = document.querySelector('.setup-wizard'); // Окно настроек персонажа
-  var wizardCoat = setupWizard.querySelector('.wizard-coat'); // Элемент плаща
-  var wizardEyes = setupWizard.querySelector('.wizard-eyes'); // Элемент глаз
-  var wizardFireball = document.querySelector('.setup-fireball-wrap'); // Элемент файербола
-  var wizardFireballInput = document.querySelector('[name=fireball-color]'); // Инпут фаербола
-  var coatInput = userDialog.querySelector('[name=coat-color]'); // Инпут плаща волшебника
-  var eyesInput = userDialog.querySelector('[name=eyes-color]'); // Инпут глаз волшебника
-
   // Открытие окна настроек по клику
   userDialogOpen.addEventListener('click', function () {
     openPopup();
@@ -179,6 +178,7 @@
     }
   });
 
+  var wizards = createWizardsArray(); // Создание массива волшебников
   similarListElement.appendChild(getWizardFragment()); // Добавление одинаковых волшебников
 
   addChangeColorListener(COAT_COLORS, wizardCoat, coatInput); // Измнение цвета плащей по клику
