@@ -61,6 +61,12 @@
   var ESC_KEY = 27;
   var ENTER_KEY = 13;
 
+  // Стартовые координаты окна настроек
+  var DEFAULT_START = {
+    top: '80px',
+    left: '50%'
+  };
+
   var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
   var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
   var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
@@ -152,6 +158,8 @@
     userDialog.classList.add('hidden');
     userDialog.querySelector('.setup-similar').classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+    userDialog.style.top = DEFAULT_START.top;
+    userDialog.style.left = DEFAULT_START.left;
   };
 
   // Открытие окна настроек по клику
