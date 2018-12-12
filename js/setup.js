@@ -3,7 +3,6 @@
 (function () {
 
   var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
-  var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
   var setupWizard = document.querySelector('.setup-wizard'); // Окно настроек персонажа
   var wizardCoat = setupWizard.querySelector('.wizard-coat'); // Элемент плаща
   var wizardEyes = setupWizard.querySelector('.wizard-eyes'); // Элемент глаз
@@ -13,25 +12,8 @@
   var eyesInput = userDialog.querySelector('[name=eyes-color]'); // Инпут глаз волшебника
   var wizardColor = window.wizardsInfo;
 
-  window.inputField = userName;
-
-  // Функция изменения цвета и значения элемента
-  var addChangeColorListener = function (colorsArr, element, valueElement) {
-    element.addEventListener('click', function () {
-      var elementColor = window.util.getRandomItem(colorsArr);
-      element.style.fill = elementColor;
-      valueElement.value = elementColor;
-    });
-  };
-
-  // Изменение цвета файербола по клику
-  wizardFireball.addEventListener('click', function () {
-    var randomColor = window.util.getRandomItem(wizardColor.fireballColors);
-    wizardFireball.style.backgroundColor = randomColor;
-    wizardFireballInput.value = randomColor;
-  });
-
-  addChangeColorListener(wizardColor.coatColors, wizardCoat, coatInput); // Измнение цвета плащей по клику
-  addChangeColorListener(wizardColor.eyesColors, wizardEyes, eyesInput); // Изменение цвета глаз по клику
+  window.util.addChangeColorListener(wizardColor.fireballColors, wizardFireball, wizardFireballInput); // Изменение цвета файербола
+  window.util.addChangeColorListener(wizardColor.coatColors, wizardCoat, coatInput); // Измнение цвета плащей по клику
+  window.util.addChangeColorListener(wizardColor.eyesColors, wizardEyes, eyesInput); // Изменение цвета глаз по клику
 
 })();

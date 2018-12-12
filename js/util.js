@@ -19,6 +19,25 @@ window.util = (function () {
     return arr[getRandomUp(arr.length)];
   };
 
+  // Функция изменения цвета и значения элемента
+  var addChangeColorListener = function (colorsArr, element, valueElement) {
+
+    return element.addEventListener('click', function (evt) {
+      evt.preventDefault();
+
+      var elementColor = window.util.getRandomItem(colorsArr);
+
+      if (element.tagName.toLowerCase() === 'div') {
+        element.style.backgroundColor = elementColor;
+      } else {
+        element.style.fill = elementColor;
+      }
+
+      valueElement.value = elementColor;
+
+    });
+  };
+
   return {
     isEscEvent: function (evt, action) {
       if ((evt.keyCode === ESC_KEYCODE) && (evt.target !== window.inputField)) {
@@ -32,6 +51,7 @@ window.util = (function () {
     },
     getRandom: getRandom,
     getRandomUp: getRandomUp,
-    getRandomItem: getRandomItem
+    getRandomItem: getRandomItem,
+    addChangeColorListener: addChangeColorListener
   };
 })();

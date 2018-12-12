@@ -11,6 +11,9 @@
   var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
   var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
   var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
+  var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
+  
+  window.inputField = userName;
 
   // Функция закрытия окна настроек нажатием клавиши ESC
   var onPopupEscPress = function (evt) {
