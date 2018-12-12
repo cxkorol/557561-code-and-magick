@@ -2,56 +2,55 @@
 
 (function () {
 
-  var setupDialogElement = document.querySelector('.setup');
-  var dialogHandler = setupDialogElement.querySelector('.upload');
+  // Стартовые координаты окна настроек
+  var DEFAULT_START = {
+    top: '80px',
+    left: '50%'
+  };
 
-  dialogHandler.addEventListener('mousedown', function (evt) {
-    evt.preventDefault();
+  var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
+  var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
+  var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
 
-    var startCoords = {
-      x: evt.clientX,
-      y: evt.clientY
-    };
+  // Функция закрытия окна настроек нажатием клавиши ESC
+  var onPopupEscPress = function (evt) {
+    window.util.isEscEvent(evt, closePopup);
+  };
 
-    var dragged = false;
+  // Функция открытия окна настроек
+  var openPopup = function () {
+    userDialog.classList.remove('hidden');
+    userDialog.querySelector('.setup-similar').classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
+  };
 
-    var onMouseMove = function (moveEvt) {
-      moveEvt.preventDefault();
-      dragged = true;
+  // Функция закрытия окна настроек
+  var closePopup = function () {
+    userDialog.classList.add('hidden');
+    userDialog.querySelector('.setup-similar').classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
+    userDialog.style.top = DEFAULT_START.top;
+    userDialog.style.left = DEFAULT_START.left;
+  };
 
-      var shift = {
-        x: startCoords.x - moveEvt.clientX,
-        y: startCoords.y - moveEvt.clientY
-      };
+  // Открытие окна настроек по клику
+  userDialogOpen.addEventListener('click', function () {
+    openPopup();
+  });
 
-      startCoords = {
-        x: moveEvt.clientX,
-        y: moveEvt.clientY
-      };
+  // Открытие окна настроек по нажатию клавиши Enter
+  userDialogOpen.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, openPopup);
+  });
 
-      setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
-      setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
+  // Закрытие окна настроек по клику
+  userDialogClose.addEventListener('click', function () {
+    closePopup();
+  });
 
-    };
-
-    var onMouseUp = function (upEvt) {
-      upEvt.preventDefault();
-
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
-
-      if (dragged) {
-        var onClickPreventDefault = function (prevEvt) {
-          prevEvt.preventDefault();
-          dialogHandler.removeEventListener('click', onClickPreventDefault);
-        };
-        dialogHandler.addEventListener('click', onClickPreventDefault);
-      }
-
-    };
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
+  // Закрытие окна настроек по нажанию клавиши Enter
+  userDialogClose.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, closePopup);
   });
 
 })();

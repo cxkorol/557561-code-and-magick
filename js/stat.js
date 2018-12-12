@@ -52,11 +52,6 @@ window.renderStatistics = function (ctx, names, times) {
     return maxElement;
   };
 
-  // Нахождение случайного числа
-  var getRandom = function (min, max) {
-    return Math.random() * (max - min) + min;
-  };
-
   renderCloud(CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)'); // Отрисовка тени поля статистики
   renderCloud(CLOUD_X, CLOUD_Y, '#fff'); // Отрисовка поля статистики
   renderText(); // Отрисовка текста статистики
@@ -64,7 +59,7 @@ window.renderStatistics = function (ctx, names, times) {
   var maxTime = getMaxTime(); // Записывает максимальное значение массива в переменную
 
   for (var i = 0; i < names.length; i++) {
-    var сolorSaturationRandom = getRandom(0.2, 1); // Случайное значение
+    var сolorSaturationRandom = window.util.getRandom(0.2, 1); // Случайное значение
     var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime; // Расчет высоты столбца игрока
     var textTimesPositionY = MAX_HEIGHT_BAR - heightBarPlayer - 20; // Расположение текста с результатом по оси Y
 
