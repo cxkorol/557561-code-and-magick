@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+window.similarWizards = (function () {
 
   // Массив имён волшебников
   var WIZARD_NAMES = [
@@ -71,6 +71,11 @@
     return fragment;
   };
 
-  var wizards = createWizardsArray(); // Создание массива волшебников
-  similarListElement.appendChild(getWizardFragment()); // Добавление одинаковых волшебников
+  var wizards = createWizardsArray();
+  similarListElement.appendChild(getWizardFragment());
+
+  return {
+    wizards: wizards,
+    getWizardFragment: getWizardFragment
+  };
 })();
