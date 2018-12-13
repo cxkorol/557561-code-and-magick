@@ -60,7 +60,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i++) {
     var сolorSaturationRandom = window.util.getRandom(0.2, 1);
-    var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime; 
+    var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime;
     var textTimesPositionY = MAX_HEIGHT_BAR - heightBarPlayer - 20;
 
     // Отрисовка имени игрока
