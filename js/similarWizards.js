@@ -40,7 +40,6 @@ window.similarWizards = (function () {
       var coatColor = window.wizardsInfo.coatColors[window.util.getRandomUp(window.wizardsInfo.coatColors.length)];
       var eyesColor = window.wizardsInfo.eyesColors[window.util.getRandomUp(window.wizardsInfo.eyesColors.length)];
 
-      // Cоздание объекта волшебников
       wizards[i] = {
         name: wizardName,
         coat: coatColor,
@@ -50,7 +49,7 @@ window.similarWizards = (function () {
     return wizards;
   };
 
-  // Создание и отрисовка шаблона волшебников
+  // Фунция создания и отрисовки шаблона волшебников
   var renderWizard = function (wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
