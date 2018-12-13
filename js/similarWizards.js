@@ -29,7 +29,6 @@ window.similarWizards = (function () {
   // Количество волшебников
   var NUM_WIZARDS = 4;
 
-  var similarListElement = document.querySelector('.setup-similar-list'); // Блок с похожими волшебниками
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item'); // Элемент для вставки похожих волшебников
 
   // Функция создания массива волшебников
@@ -72,10 +71,8 @@ window.similarWizards = (function () {
   };
 
   var wizards = createWizardsArray();
-  similarListElement.appendChild(getWizardFragment());
 
   return {
-    wizards: wizards,
     getWizardFragment: getWizardFragment
   };
 })();
