@@ -39,7 +39,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
   };
 
-  // Нахождение максимального элемента в массиве времени прохождения игроков
+  // Функция нахождения максимального элемента в массиве времени прохождения игроков
   var getMaxTime = function () {
     var maxElement = times[0];
 
@@ -56,7 +56,7 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(CLOUD_X, CLOUD_Y, '#fff'); // Отрисовка поля статистики
   renderText();
 
-  var maxTime = getMaxTime(); // Записывает максимальное значение массива в переменную
+  var maxTime = getMaxTime();
 
   for (var i = 0; i < names.length; i++) {
     var сolorSaturationRandom = window.util.getRandom(0.2, 1);
