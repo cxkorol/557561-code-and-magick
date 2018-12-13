@@ -12,8 +12,8 @@
   var eyesInput = userDialog.querySelector('[name=eyes-color]'); // Инпут глаз волшебника
   var wizardColor = window.wizardsInfo;
 
-  window.util.addChangeColorListener(wizardColor.fireballColors, wizardFireball, wizardFireballInput); // Изменение цвета файербола
-  window.util.addChangeColorListener(wizardColor.coatColors, wizardCoat, coatInput); // Измнение цвета плащей по клику
-  window.util.addChangeColorListener(wizardColor.eyesColors, wizardEyes, eyesInput); // Изменение цвета глаз по клику
+  window.util.addChangeColorListener(wizardColor.fireballColors, wizardFireball, wizardFireballInput);
+  window.util.addChangeColorListener(wizardColor.coatColors, wizardCoat, coatInput);
+  window.util.addChangeColorListener(wizardColor.eyesColors, wizardEyes, eyesInput);
 
 })();
