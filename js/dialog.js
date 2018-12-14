@@ -2,56 +2,61 @@
 
 (function () {
 
-  var setupDialogElement = document.querySelector('.setup');
-  var dialogHandler = setupDialogElement.querySelector('.upload');
+  // Стартовые координаты окна настроек
+  var DEFAULT_START = {
+    top: '80px',
+    left: '50%'
+  };
 
-  dialogHandler.addEventListener('mousedown', function (evt) {
-    evt.preventDefault();
+  var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
+  var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
+  var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
+  var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
+  var similarListElement = document.querySelector('.setup-similar-list');
+  var ESC_KEY = 27;
+  var ENTER_KEY = 13;
 
-    var startCoords = {
-      x: evt.clientX,
-      y: evt.clientY
-    };
+  // Отрисовка похожих волшебников
+  similarListElement.appendChild(window.similarWizards.getWizardFragment());
 
-    var dragged = false;
+  var onPopupEscPress = function (evt) {
+    if (userName !== evt.target && evt.keyCode === ESC_KEY) {
+      closePopup();
+    }
+  };
 
-    var onMouseMove = function (moveEvt) {
-      moveEvt.preventDefault();
-      dragged = true;
+  var openPopup = function () {
+    userDialog.classList.remove('hidden');
+    userDialog.querySelector('.setup-similar').classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
+  };
 
-      var shift = {
-        x: startCoords.x - moveEvt.clientX,
-        y: startCoords.y - moveEvt.clientY
-      };
+  var closePopup = function () {
+    userDialog.classList.add('hidden');
+    userDialog.querySelector('.setup-similar').classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
+    userDialog.style.top = DEFAULT_START.top;
+    userDialog.style.left = DEFAULT_START.left;
+  };
 
-      startCoords = {
-        x: moveEvt.clientX,
-        y: moveEvt.clientY
-      };
+  userDialogOpen.addEventListener('click', function () {
+    openPopup();
+  });
 
-      setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
-      setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
+  userDialogOpen.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_KEY) {
+      openPopup();
+    }
+  });
 
-    };
+  userDialogClose.addEventListener('click', function () {
+    closePopup();
+  });
 
-    var onMouseUp = function (upEvt) {
-      upEvt.preventDefault();
-
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
-
-      if (dragged) {
-        var onClickPreventDefault = function (prevEvt) {
-          prevEvt.preventDefault();
-          dialogHandler.removeEventListener('click', onClickPreventDefault);
-        };
-        dialogHandler.addEventListener('click', onClickPreventDefault);
-      }
-
-    };
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
+  userDialogClose.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_KEY) {
+      closePopup();
+    }
   });
 
 })();

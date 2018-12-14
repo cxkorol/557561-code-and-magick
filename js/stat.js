@@ -39,7 +39,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
   };
 
-  // Нахождение максимального элемента в массиве времени прохождения игроков
+  // Функция нахождения максимального элемента в массиве времени прохождения игроков
   var getMaxTime = function () {
     var maxElement = times[0];
 
@@ -52,21 +52,16 @@ window.renderStatistics = function (ctx, names, times) {
     return maxElement;
   };
 
-  // Нахождение случайного числа
-  var getRandom = function (min, max) {
-    return Math.random() * (max - min) + min;
-  };
-
   renderCloud(CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)'); // Отрисовка тени поля статистики
   renderCloud(CLOUD_X, CLOUD_Y, '#fff'); // Отрисовка поля статистики
-  renderText(); // Отрисовка текста статистики
+  renderText();
 
-  var maxTime = getMaxTime(); // Записывает максимальное значение массива в переменную
+  var maxTime = getMaxTime();
 
   for (var i = 0; i < names.length; i++) {
-    var сolorSaturationRandom = getRandom(0.2, 1); // Случайное значение
-    var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime; // Расчет высоты столбца игрока
-    var textTimesPositionY = MAX_HEIGHT_BAR - heightBarPlayer - 20; // Расположение текста с результатом по оси Y
+    var сolorSaturationRandom = window.util.getRandom(0.2, 1);
+    var heightBarPlayer = (MAX_HEIGHT_BAR * times[i]) / maxTime;
+    var textTimesPositionY = MAX_HEIGHT_BAR - heightBarPlayer - 20;
 
     // Отрисовка имени игрока
     ctx.fillText(names[i],
@@ -74,10 +69,10 @@ window.renderStatistics = function (ctx, names, times) {
         PLAYER_NAME_POSITION_Y + GAP
     );
 
-    ctx.fillStyle = 'rgba(0, 0, 255, ' + сolorSaturationRandom + ')'; // Заливка столбцов цветом со случайной насыщенностью
+    ctx.fillStyle = 'rgba(0, 0, 255, ' + сolorSaturationRandom + ')';
 
     if (names[i] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)'; // Заливка столбца игрока
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
 
     // Отрисовка столбца игрока
