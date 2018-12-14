@@ -13,14 +13,16 @@
   var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
   var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
   var similarListElement = document.querySelector('.setup-similar-list');
-
-  window.inputField = userName;
+  var ESC_KEY = 27;
+  var ENTER_KEY = 13;
 
   // Отрисовка похожих волшебников
   similarListElement.appendChild(window.similarWizards.getWizardFragment());
 
   var onPopupEscPress = function (evt) {
-    window.util.onEscEvent(evt, closePopup);
+    if (userName !== evt.target && evt.keyCode === ESC_KEY) {
+      closePopup();
+    }
   };
 
   var openPopup = function () {
@@ -42,7 +44,9 @@
   });
 
   userDialogOpen.addEventListener('keydown', function (evt) {
-    window.util.onEnterEvent(evt, openPopup);
+    if (evt.keyCode === ENTER_KEY) {
+      openPopup();
+    }
   });
 
   userDialogClose.addEventListener('click', function () {
