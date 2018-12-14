@@ -54,7 +54,9 @@
   });
 
   userDialogClose.addEventListener('keydown', function (evt) {
-    window.util.onEnterEvent(evt, closePopup);
+    if (evt.keyCode === ENTER_KEY) {
+      closePopup();
+    }
   });
 
 })();
