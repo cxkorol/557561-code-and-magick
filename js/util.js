@@ -39,12 +39,12 @@ window.util = (function () {
   };
 
   return {
-    isEscEvent: function (evt, action) {
+    onEscEvent: function (evt, action) {
       if ((evt.keyCode === ESC_KEYCODE) && (evt.target !== window.inputField)) {
         action();
       }
     },
-    isEnterEvent: function (evt, action) {
+    onEnterEvent: function (evt, action) {
       if (evt.keyCode === ENTER_KEYCODE) {
         action();
       }

@@ -20,7 +20,7 @@
   similarListElement.appendChild(window.similarWizards.getWizardFragment());
 
   var onPopupEscPress = function (evt) {
-    window.util.isEscEvent(evt, closePopup);
+    window.util.onEscEvent(evt, closePopup);
   };
 
   var openPopup = function () {
@@ -42,7 +42,7 @@
   });
 
   userDialogOpen.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, openPopup);
+    window.util.onEnterEvent(evt, openPopup);
   });
 
   userDialogClose.addEventListener('click', function () {
@@ -50,7 +50,7 @@
   });
 
   userDialogClose.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, closePopup);
+    window.util.onEnterEvent(evt, closePopup);
   });
 
 })();
