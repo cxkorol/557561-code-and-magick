@@ -2,19 +2,9 @@
 
 (function () {
 
-  // Стартовые координаты окна настроек
-  var DEFAULT_START = {
-    top: '80px',
-    left: '50%'
-  };
-
-  var userDialog = document.querySelector('.setup'); // Окно настроек пользователя
-  var userDialogOpen = document.querySelector('.setup-open'); // Окно с открытыми настройками пользователя
-  var userDialogClose = userDialog.querySelector('.setup-close'); // Окно c закрытыми настройками пользователя
-  var userName = userDialog.querySelector('.setup-user-name'); // Окно имени персонажа
+  var userDialog = document.querySelector('.setup'); 
   var form = userDialog.querySelector('.setup-wizard-form');
-  var ESC_KEY = 27;
-  var ENTER_KEY = 13;
+ 
   var NUM_WIZARDS = 4;
 
   // Фунция создания и отрисовки шаблона волшебников
@@ -44,46 +34,6 @@
 
     return;
   };
-
-  var onPopupEscPress = function (evt) {
-    if (userName !== evt.target && evt.keyCode === ESC_KEY) {
-      closePopup();
-    }
-  };
-
-  var openPopup = function () {
-    userDialog.classList.remove('hidden');
-    userDialog.querySelector('.setup-similar').classList.remove('hidden');
-    document.addEventListener('keydown', onPopupEscPress);
-  };
-
-  var closePopup = function () {
-    userDialog.classList.add('hidden');
-    userDialog.querySelector('.setup-similar').classList.add('hidden');
-    document.removeEventListener('keydown', onPopupEscPress);
-    userDialog.style.top = DEFAULT_START.top;
-    userDialog.style.left = DEFAULT_START.left;
-  };
-
-  userDialogOpen.addEventListener('click', function () {
-    openPopup();
-  });
-
-  userDialogOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEY) {
-      openPopup();
-    }
-  });
-
-  userDialogClose.addEventListener('click', function () {
-    closePopup();
-  });
-
-  userDialogClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEY) {
-      closePopup();
-    }
-  });
 
   // Функция сооздания блока сообщения об ошибке
   var errorHandler = function (errorMessage) {

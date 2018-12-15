@@ -46,7 +46,7 @@ window.similarWizards = (function () {
     }
     return wizards;
   };
-  
+
   return {
     createWizardsArray: createWizardsArray,
   };
