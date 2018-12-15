@@ -17,17 +17,6 @@
   var ENTER_KEY = 13;
   var NUM_WIZARDS = 4;
 
-  var errorHandler = function (errorMessage) {
-    var node = document.createElement('div');
-    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
-    node.textContent = errorMessage;
-    document.body.insertAdjacentElement('afterbegin', node);
-  };
-
   // Фунция создания и отрисовки шаблона волшебников
   var renderWizard = function (wizard) {
 
@@ -95,6 +84,18 @@
       closePopup();
     }
   });
+
+  // Функция сооздания блока сообщения об ошибке
+  var errorHandler = function (errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
 
   var formSubmitSuccessHandler = function () {
     userDialog.classList.add('hidden');
