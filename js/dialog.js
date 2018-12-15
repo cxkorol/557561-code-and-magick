@@ -2,9 +2,9 @@
 
 (function () {
 
-  var userDialog = document.querySelector('.setup'); 
+  var userDialog = document.querySelector('.setup');
   var form = userDialog.querySelector('.setup-wizard-form');
- 
+
   var NUM_WIZARDS = 4;
 
   // Фунция создания и отрисовки шаблона волшебников
