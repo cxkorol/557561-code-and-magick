@@ -16,7 +16,7 @@
       if (xhr.status === XHR_STATUS_OK) {
         onLoad(xhr.response);
       } else {
-        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
+        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText + '\n Не удалось загрузить данные');
       }
     });
 
